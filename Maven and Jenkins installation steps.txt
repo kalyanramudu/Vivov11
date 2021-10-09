@@ -1,0 +1,39 @@
+ 
+   apt-get update
+    apt install openjdk-8-jre-headless
+    wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add
+    sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+    apt-get update
+    apt install jenkins
+    java -version
+   cd /opt/
+   wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+   sudo tar xzf apache-maven-3.6.3-bin.tar.gz
+    sudo ln -s apache-maven-3.6.3 maven
+
+
+vi can be used to edit files in linux just copy from your local environment,give below command click I from keyboard and copy content from your end give right click on server ,it will copy data then use ESC from keyboard
+Once done use :wq! to commit changes and exit from the file
+
+
+
+     vi /etc/profile.d/maven.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+You can use cat /etc/profile.d/maven.sh to verify properly done or not(cat command used to view files in linux)
+
+
+   cd /usr/lib/jvm/
+    ls
+    source /etc/profile.d/maven.sh
+    mvn -version
+   systemctl start jenkins
+systemctl status jenkins
+
+Use nestat -ntlp to check for all services/ports running in server
+Check for port number 8080 in listening status
